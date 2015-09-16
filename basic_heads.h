@@ -6,27 +6,7 @@
 #define TEST_HEADS_H
 
 // necessary head files for every C++ project
-#include <string.h>
-#include <assert.h>
-
-#include <map>
-#include <set>
-#include <queue>
-#include <stack>
-#include <vector>
-#include <string>
-#include <bitset>
-#include <limits>
-#include <sstream>
-#include <climits>
-#include <fstream>
-#include <iostream>
-#include <valarray>
-#include <iterator>
-#include <algorithm>
-#include <functional>
-#include <unordered_map>
-#include <unordered_set>
+#include <bits/stdc++.h>
 
 using namespace std;
 
