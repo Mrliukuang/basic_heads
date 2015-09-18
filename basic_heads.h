@@ -10,7 +10,17 @@
 
 using namespace std;
 
+#define ALL(x) (x).begin(), (x).end()
+
 const int INF = 987654321;
+const double eps = 1e-7;
+
+typedef long long ll;
+typedef unsigned long long ull;
+
+typedef pair<int, int> PII;
+typedef vector<int> VI;
+
 
 // 输出二维矩阵
 template<class T>
@@ -29,6 +39,28 @@ void printVector(const T& v) {
         cout << e << " ";
     cout << endl;
 }
+
+// Another way to output through iterators.
+template<typename Iter>
+ostream& _out(ostream& s, Iter b, Iter e) {
+    s << "[";
+    for (auto it = b; it != e; ++it) s << (it == b ? "" : " ") << *it;
+    s << "]";
+    return s;
+}
+
+// use "cout<<" to output vector/set/pair/map
+template<typename A, typename B>
+ostream& operator<<(ostream& s, const pair<A, B>& p) { return s << "(" << p.first << ", " << p.second << ")"; }
+
+template<typename T>
+ostream& operator<<(ostream& s, const vector<T>& v) { return _out(s, ALL(v)); }
+
+template<typename T>
+ostream& operator<<(ostream& s, const set<T>& c) { return _out(s, ALL(c)); }
+
+template<typename A, typename B>
+ostream& operator<<(ostream& s, const map<A, B>& c) { return _out(s, ALL(c)); }
 
 // 替代 cout << ... << endl
 template<class T>
