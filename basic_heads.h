@@ -16,11 +16,11 @@ const int INF = 987654321;
 const double eps = 1e-7;
 
 typedef long long ll;
+typedef long double ld;
 typedef unsigned long long ull;
 
 typedef pair<int, int> PII;
 typedef vector<int> VI;
-
 
 // 输出二维矩阵
 template<class T>
@@ -72,10 +72,10 @@ void println(const T& a) {
 vector<vector<char>> toBoard(vector<string>& v) {
     vector<vector<char>> board;
     for (string s : v) {
-        vector<char> v;
+        vector<char> w;
         for (char c : s)
-            v.push_back(c);
-        board.push_back(v);
+            w.push_back(c);
+        board.push_back(w);
     }
     return board;
 }
@@ -93,8 +93,8 @@ bool isPrime(const T a) {
 
 // 判断回文字符串
 bool isPalindrome(const string& s) {
-    int left = 0;
-    int right = s.size() - 1;
+    size_t left = 0;
+    size_t right = s.size() - 1;
     while (left <= right) {
         if (s[left] != s[right]) return false;
         ++left;
@@ -152,7 +152,7 @@ struct UF {
 vector<string> split(const string& s, const char sep) {
     // make sure there is no extra spaces front and end.
     vector<string> splited;
-    int left = 0, right = 0;
+    size_t left = 0, right = 0;
     while (right != string::npos) {
         right = s.find(sep, left);
         splited.push_back(s.substr(left, right - left));
