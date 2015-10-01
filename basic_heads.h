@@ -21,6 +21,7 @@
 #include <cctype>
 #include <sstream>
 #include <climits>
+#include <numeric>
 #include <fstream>
 #include <iostream>
 #include <valarray>
@@ -32,10 +33,12 @@
 
 using namespace std;
 
-#define ALL(x) (x).begin(), (x).end()
+#define all(x) (x).begin(), (x).end()
+#define forn(i, a, n) for (int i = a; i < (n); ++i)
 
 const int INF = 987654321;
-const double eps = 1e-7;
+const double PI = 3.1415926535898;
+const double EPS = 1e-7;
 
 typedef long long ll;
 typedef long double ld;
@@ -123,6 +126,12 @@ bool isPalindrome(const string& s) {
         --right;
     }
     return true;
+}
+
+// 最大公约数
+int gcd(int a, int b) {
+    if (b == 0) return a;
+    return gcd(b, a%b);
 }
 
 // Binary Tree Node
