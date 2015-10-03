@@ -33,7 +33,7 @@
 
 using namespace std;
 
-#define all(x) (x).begin(), (x).end()
+#define ALL(x) (x).begin(), (x).end()
 #define forn(i, a, n) for (int i = a; i < (n); ++i)
 
 const int INF = 987654321;
