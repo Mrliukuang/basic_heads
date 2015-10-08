@@ -2,11 +2,10 @@
 // Created by kuang on 15-7-14.
 //
 
-#ifndef TEST_HEADS_H
-#define TEST_HEADS_H
+#ifndef BASIC_HEADS_H
+#define BASIC_HEADS_H
 
 // necessary head files for every C++ project
-// #include <bits/stdc++.h>
 #include <string.h>
 #include <assert.h>
 
@@ -18,6 +17,7 @@
 #include <string>
 #include <bitset>
 #include <limits>
+#include <thread>
 #include <cctype>
 #include <sstream>
 #include <climits>
@@ -34,7 +34,9 @@
 using namespace std;
 
 #define ALL(x) (x).begin(), (x).end()
-#define forn(i, a, n) for (int i = a; i < (n); ++i)
+//#define all(x) (x).begin(), (x).end()
+//#define forn(i, a, n) for (int i = a; i < (n); ++i)
+//#define rforn(i, n) for (int i = n; i >= 0; --i)
 
 const int INF = 987654321;
 const double PI = 3.1415926535898;
@@ -65,6 +67,12 @@ void printVector(const T& v) {
     cout << endl;
 }
 
+// 替代 cout << ... << endl
+template<class T>
+void println(const T& a) {
+    cout << a << endl;
+}
+
 // Another way to output through iterators.
 template<typename Iter>
 ostream& _out(ostream& s, Iter b, Iter e) {
@@ -87,20 +95,14 @@ ostream& operator<<(ostream& s, const set<T>& c) { return _out(s, ALL(c)); }
 template<typename A, typename B>
 ostream& operator<<(ostream& s, const map<A, B>& c) { return _out(s, ALL(c)); }
 
-// 替代 cout << ... << endl
-template<class T>
-void println(const T& a) {
-    cout << a << endl;
-}
-
 // convert string vector to char vector function
 vector<vector<char>> toBoard(vector<string>& v) {
     vector<vector<char>> board;
     for (string s : v) {
-        vector<char> w;
+        vector<char> v;
         for (char c : s)
-            w.push_back(c);
-        board.push_back(w);
+            v.push_back(c);
+        board.push_back(v);
     }
     return board;
 }
@@ -128,57 +130,6 @@ bool isPalindrome(const string& s) {
     return true;
 }
 
-// 最大公约数
-int gcd(int a, int b) {
-    if (b == 0) return a;
-    return gcd(b, a%b);
-}
-
-// Binary Tree Node
-struct TreeNode {
-    int val;
-    TreeNode* left, * right;
-
-    TreeNode() : val(0), left(nullptr), right(nullptr) { }
-
-    TreeNode(int v) : val(v), left(nullptr), right(nullptr) { }
-};
-
-// Union-Find
-struct UF {
-    vector<int> id, sz;
-
-    UF(int n) : id(n), sz(n, 1) { // 注意这种简便的初始化方式
-        for (int i = 0; i < n; ++i) {
-            id[i] = i;
-        }
-    }
-
-    int find(int u) {
-        while (u != id[u]) {
-            u = id[id[u]]; // path compression
-        }
-        return u;
-    }
-
-    void merge(int u, int v) {
-        u = find(u);
-        v = find(v);
-        if (u == v) return;
-        if (sz[u] < sz[v]) {
-            id[u] = v;
-            sz[v] += sz[u];
-        } else {
-            id[v] = u;
-            sz[u] += sz[v];
-        }
-    }
-
-    bool connected(int u, int v) {
-        return find(u) == find(v);
-    }
-};
-
 // basic string split function
 vector<string> split(const string& s, const char sep) {
     // make sure there is no extra spaces front and end.
@@ -192,4 +143,44 @@ vector<string> split(const string& s, const char sep) {
     return splited;
 }
 
-#endif //TEST_HEADS_H
+// 最大公约数
+int gcd(int a, int b) {
+    return b == 0 ? a : gcd(b, a % b);
+}
+
+// Union-Find
+struct UF {
+    vector<int> id, sz;
+    
+    UF(int n) : id(n), sz(n, 1) { // 注意这种简便的初始化方式
+        for (int i = 0; i < n; ++i) {
+            id[i] = i;
+        }
+    }
+    
+    int find(int u) {
+        while (u != id[u]) {
+            u = id[id[u]]; // path compression
+        }
+        return u;
+    }
+    
+    void merge(int u, int v) {
+        u = find(u);
+        v = find(v);
+        if (u == v) return;
+        if (sz[u] < sz[v]) {
+            id[u] = v;
+            sz[v] += sz[u];
+        } else {
+            id[v] = u;
+            sz[u] += sz[v];
+        }
+    }
+    
+    bool connected(int u, int v) {
+        return find(u) == find(v);
+    }
+};
+
+#endif //BASIC_HEADS_H
