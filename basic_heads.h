@@ -13,23 +13,26 @@
 #include <set>
 #include <queue>
 #include <stack>
+#include <deque>
 #include <vector>
 #include <string>
 #include <bitset>
-#include <limits>
-#include <thread>
 #include <cctype>
-#include <sstream>
-#include <climits>
-#include <numeric>
+#include <utility>
 #include <fstream>
+#include <sstream>
 #include <iostream>
 #include <valarray>
 #include <iterator>
 #include <algorithm>
 #include <functional>
-#include <unordered_map>
-#include <unordered_set>
+#include <unordered_map> // C++11
+#include <unordered_set> // C++11
+
+#include <limits>
+#include <thread>
+#include <climits>
+#include <numeric>
 
 using namespace std;
 
@@ -42,9 +45,9 @@ const int INF = 987654321;
 const double PI = 3.1415926535898;
 const double EPS = 1e-7;
 
-typedef long long ll;
-typedef long double ld;
-typedef unsigned long long ull;
+typedef long long LL;
+typedef long double LD;
+typedef unsigned long long ULL;
 
 typedef pair<int, int> PII;
 typedef vector<int> VI;
